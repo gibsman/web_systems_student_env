@@ -1,0 +1,1 @@
+<li><a href="http://webdb.dev/logout">Log out</a></li>

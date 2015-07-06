@@ -1,13 +1,13 @@
-<html>
-<head>
-<meta charset="utf-8">
-</head>
-<body>
 <?php
 include_once 'Router.php';
+include_once 'fenom/src/Fenom.php';
+Fenom::registerAutoload();
 
-// вызывает {module}.routes.php
-Router::process($_SERVER['REQUEST_METHOD'], $_SERVER['REQUEST_URI']);
+function get_fenom() {
+    return Fenom::factory('', 'cache/', array('auto_reload' => true));
+}
+session_start();
+$content = Router::process($_SERVER['REQUEST_METHOD'], $_SERVER['REQUEST_URI']);
+$Fenom = get_fenom();
+$Fenom->display('/fenom/sandbox/templates/pract/main.tpl', $content);
 ?>
-</body>
-</html>
